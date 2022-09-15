@@ -22,21 +22,21 @@ class WorkClient:
                 if current_folder.title == 'Work/Chn' or \
                         current_folder.title == "Work/54fz":
                     for current_peer in current_folder.include_peers:
-                        print(type(current_peer))
                         result.append(current_peer)
         return result
 
-    async def mute_peers(app: Client, peer_list: list):
+    async def mute_peers(app: Client, peer_list: list, mute_until: datetime.datetime):
         print(f"Peer count: {len(peer_list)}")
         i = 1
         for peer in peer_list:
             peer = InputNotifyPeer(peer=peer)
+            mute_until_timestamp = round(mute_until.timestamp())
             await app.invoke(
                 UpdateNotifySettings(
                     peer=peer,
                     settings=InputPeerNotifySettings(
                         show_previews=False,
-                        mute_until=int(round(datetime.datetime(2022, 9, 12).timestamp())),
+                        mute_until=int(mute_until_timestamp),
                         sound=NotificationSoundDefault()
                     )
                 )
