@@ -3,6 +3,8 @@ from pyrogram import Client
 from pyrogram.errors import FloodWait
 from pyrogram_app.workclient import WorkClient
 from pyrogram_app.shifts import Employees
+from pyrogram_app.logger import logger
+
 
 async def main():
     async with Client("Pyrogram App") as app:
@@ -18,6 +20,7 @@ async def main():
                        mute_until=is_on_work[1]['date']
                 )
         except FloodWait as e:
-           await asyncio.sleep(e.value)
+            logger.error(e)
+            await asyncio.sleep(e.value)
 
 asyncio.run(main())

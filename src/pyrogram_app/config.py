@@ -8,3 +8,4 @@ API_HASH = os.environ.get('API_HASH')
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))  # root folder
 CSV_PATH = ROOT_DIR + '/csv/employers.csv'
+

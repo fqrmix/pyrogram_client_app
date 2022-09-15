@@ -5,6 +5,7 @@ from pyrogram.raw.types import (DialogFilterDefault, DialogFilter,
 from pyrogram.raw.functions.account import UpdateNotifySettings
 from pyrogram.raw.functions.messages import GetDialogFilters
 from pyrogram.errors import FloodWait
+from pyrogram_app.logger import logger
 import datetime
 
 class WorkClient:
@@ -26,7 +27,7 @@ class WorkClient:
         return result
 
     async def mute_peers(app: Client, peer_list: list, mute_until: datetime.datetime):
-        print(f"Peer count: {len(peer_list)}")
+        logger.info(f"Peer count: {len(peer_list)}")
         i = 1
         for peer in peer_list:
             peer = InputNotifyPeer(peer=peer)
@@ -41,12 +42,12 @@ class WorkClient:
                     )
                 )
             )
-            print(f"{peer} was muted! [{i}/{len(peer_list)}]")
+            logger.info(f"{peer} was muted! [{i}/{len(peer_list)}]")
             i += 1
         pass
 
     async def unmute_peers(app: Client, peer_list: list):
-        print(f"Peer count: {len(peer_list)}")
+        logger.info(f"Peer count: {len(peer_list)}")
         i = 1
         for peer in peer_list:
             peer = InputNotifyPeer(peer=peer)
@@ -60,6 +61,6 @@ class WorkClient:
                     )
                 )
             )
-            print(f"{peer} was unmuted! [{i}/{len(peer_list)}]")
+            logger.info(f"{peer} was unmuted! [{i}/{len(peer_list)}]")
             i += 1
         pass

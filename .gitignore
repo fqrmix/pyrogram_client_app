@@ -4,5 +4,4 @@ pyrightconfig.json
 env
 *.session
 *.pyc
-*.csv
 
