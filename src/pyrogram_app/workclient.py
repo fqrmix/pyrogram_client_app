@@ -42,7 +42,7 @@ class WorkClient:
                     )
                 )
             )
-            logger.info(f"{peer} was muted! [{i}/{len(peer_list)}]")
+            logger.info(f"{peer} was muted until {mute_until}! [{i}/{len(peer_list)}]")
             i += 1
         pass
 

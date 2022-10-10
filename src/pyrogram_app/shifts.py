@@ -31,13 +31,14 @@ class Employees:
         result = [False, {'date': result_datetime, 'shift': None}]
         for current_employee in self.employees:
             if current_employee['name'] == name:
-                if current_employee['shifts'][current_day] != '':
+                if current_employee['shifts'][current_day] != ''\
+                    and current_employee['shifts'][current_day] != 'ОТ':
                     result[0] = True
                 else:
                     last_month_day = len(current_employee['shifts']) + 1 
                     for next_day in range(int(current_day), last_month_day):
                         next_shift = current_employee['shifts'][str(next_day)]
-                        if next_shift != '' and result_datetime is None:
+                        if (next_shift != '' and next_shift !='ОТ') and result_datetime is None:
                             result_datetime = datetime.datetime(
                                     year=today_datetime.year,
                                     month=today_datetime.month,
