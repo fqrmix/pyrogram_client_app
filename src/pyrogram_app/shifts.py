@@ -39,7 +39,9 @@ class Employees:
                     last_month_day = len(current_employee['shifts']) + 1 
                     for next_day in range(int(current_day), last_month_day):
                         next_shift = current_employee['shifts'][str(next_day)]
-                        if (next_shift != '' and next_shift !='ОТ') and result_datetime is None:
+                        if (next_shift != '' and\
+                            next_shift !='ОТ' and\
+                            next_shift !='DO') and result_datetime is None:
                             result_datetime = datetime.datetime(
                                     year=today_datetime.year,
                                     month=today_datetime.month,
