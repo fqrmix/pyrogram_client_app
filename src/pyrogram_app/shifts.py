@@ -32,7 +32,8 @@ class Employees:
         for current_employee in self.employees:
             if current_employee['name'] == name:
                 if current_employee['shifts'][current_day] != ''\
-                    and current_employee['shifts'][current_day] != 'ОТ':
+                    and current_employee['shifts'][current_day] != 'ОТ'\
+                    and current_employee['shifts'][current_day] != 'DO':
                     result[0] = True
                 else:
                     last_month_day = len(current_employee['shifts']) + 1 
